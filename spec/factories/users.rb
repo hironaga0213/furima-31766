@@ -11,7 +11,7 @@ FactoryBot.define do
     family_name           {Faker::Name.initials(number: 2)}
     read_first            {person.first.katakana}
     read_family           {person.last.katakana}
-    birth                 {Faker::Date.backward}    
+    birth                 {Faker::Date.backward}
   end
 end
 
