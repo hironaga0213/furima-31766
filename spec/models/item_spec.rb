@@ -73,8 +73,14 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price Half-width number", "Price Out of setting range")
       end
 
-      it "priceが300~999999以外の数字の場合登録できない" do
+      it "priceが300未満の数字の場合登録できない" do
         @item.price = 250
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Out of setting range")
+      end
+
+      it "priceが999999より上の数字の場合登録できない" do
+        @item.price = 1000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
