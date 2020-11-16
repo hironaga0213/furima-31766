@@ -61,9 +61,15 @@ RSpec.describe PurchaseAddress, type: :model do
       end
 
       it "phone_numberに-が入っていると登録できない" do
-        @purchase_address.phone_number = "0429-111-111"
+        @purchase_address.phone_number = "050-111-111"
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Phone number Input only number")
+      end
+
+      it "phone_numberが12桁以上だと登録できない" do
+        @purchase_address.phone_number = "123456789101"
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Phone number 11 or less")
       end
     end
   end

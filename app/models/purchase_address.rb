@@ -9,7 +9,7 @@ class PurchaseAddress
     validates :prefecture_id, numericality: { other_than: 1, message: 'Select' }
     validates :municipality
     validates :house_number
-    validates :phone_number, numericality: {with: /[0-9]{,11}/, message: "Input only number"}
+    validates :phone_number, numericality: { only_integer: true, message: 'Input only number'}, length: { maximum: 11, message: "11 or less" }
   end
 
   def save
