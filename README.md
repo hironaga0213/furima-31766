@@ -27,7 +27,7 @@
 | category_id      | integer    | null: false                    |
 | status_id        | integer    | null: false                    |
 | delivery_fee_id  | integer    | null: false                    |
-| prefectures_id   | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | delivery_time_id | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
@@ -39,7 +39,7 @@
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :delivery_fee
-- belongs_to_active_hash :prefectures
+- belongs_to_active_hash :prefecture
 - belongs_to_active_hash :delivery_time
 
 ## purchases テーブル
@@ -53,16 +53,16 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one    :purchase_info
+- has_one    :address
 
-## purchase_infos テーブル
+## addresses テーブル
 
-| Column         | Type    | Options     |
-| -------------- | ------- | ----------- |
+| Column         | Type       | Options                        |
+| -------------- | -------    | ------------------------------ |
 | postal_code    | string     | null: false                    |
-| prefectures_id | integer    | null: false                    |
+| prefecture_id  | integer    | null: false                    |
 | municipality   | string     | null: false                    |
-| address        | string     | null: false                    |
+| house_number   | string     | null: false                    |
 | building       | string     |                                |
 | phone_number   | string     | null: false                    |
 | purchase       | references | null: false, foreign_key: true |
@@ -70,4 +70,4 @@
 ### Association
 
 - belongs_to :purchase
-- belongs_to_active_hash :prefectures
+- belongs_to_active_hash :prefecture
